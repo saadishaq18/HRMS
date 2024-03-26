@@ -79,8 +79,34 @@ const handleGetSalaryById = async (req, res) => {
     }
 }
 
+//Update Salary
+const handleUpdateSalary = async (req,res) => {
+    const id = req.params.id
+    const salary = req.body
+    try{
+        const result = await SALARY.findOneAndUpdate(
+            {
+                _id : id
+            },
+            salary,
+            {
+                new: true
+            }
+        )
+        if(!result){
+            return res.status(404).json({error: "salary not found"})
+        }
+        return res.status(200).json({message: "Salary update successfully"})
+    }
+    catch(e){
+        console.log("Error updating salary", e)
+        return res.status(500).json({error: "Internal Server error"})
+    }
+}
+
 module.exports = {
     handleAddSalary,
     handleGetSalary,
-    handleGetSalaryById
+    handleGetSalaryById,
+    handleUpdateSalary
 }
