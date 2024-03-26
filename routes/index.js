@@ -3,6 +3,6 @@ const payrollRoute = require('./payrollRoute')
 
 const router = express.Router()
 
-router.use('/account', payrollRoute)
+router.use('/payroll', payrollRoute)
 
 module.exports  = router

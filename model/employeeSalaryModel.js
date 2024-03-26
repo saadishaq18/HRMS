@@ -8,7 +8,7 @@ const salarySchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    baisc_earning:{
+    basic_earning:{
         type: Number,
         required: true
     },

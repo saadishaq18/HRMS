@@ -3,6 +3,6 @@ const employeeSalaryRoute = require('./employeeSalaryRoute')
 
 const router = express.Router()
 
-router.use('/estimate', employeeSalaryRoute)
+router.use('/salary', employeeSalaryRoute)
 
 module.exports = router

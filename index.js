@@ -11,7 +11,7 @@ const port = process.env.PORT
 
 //Database Connection
 const dbUrl = `mongodb://localhost:27017/${process.env.DATABASE}`
-handleDbToConnect(url).then(()=>{
+handleDbToConnect(dbUrl).then(()=>{
     console.log("Database Connected")
 })
 
