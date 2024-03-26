@@ -55,6 +55,8 @@ const salarySchema = new mongoose.Schema({
     
 
 
+},{
+    timestamps: true
 })
 const SALARY = mongoose.model("salary", salarySchema)
 

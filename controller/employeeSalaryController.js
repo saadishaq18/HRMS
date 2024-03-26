@@ -104,9 +104,25 @@ const handleUpdateSalary = async (req,res) => {
     }
 }
 
+//Delete Salary
+const handleDeleteSalary = async (req, res) => {
+    const id = req.params.id
+    try{
+        const result = await SALARY.deleteOne({_id:id})
+        if(!result) return res.status(404).json({error: "salary not found"})
+
+        return res.status(200).json({message: "Salary deleted successfully"})
+    }
+    catch(e){
+        console.log("Error Deleting salary",e)
+        return res.status(500).json({error: "Internal Server error"}) 
+    }
+}
+
 module.exports = {
     handleAddSalary,
     handleGetSalary,
     handleGetSalaryById,
-    handleUpdateSalary
+    handleUpdateSalary,
+    handleDeleteSalary
 }
