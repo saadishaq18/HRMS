@@ -83,6 +83,10 @@ const handleGetSalaryById = async (req, res) => {
 const handleUpdateSalary = async (req,res) => {
     const id = req.params.id
     const salary = req.body
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(400).json({error: errors.array()})
+    }
     try{
         const result = await SALARY.findOneAndUpdate(
             {
