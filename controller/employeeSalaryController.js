@@ -48,6 +48,39 @@ const handleAddSalary = async (req, res) => {
     
 }
 
+//Get All Salary
+const handleGetSalary = async (req,res) =>{
+    try{
+        const salary = await SALARY.find({})
+        if(!salary){
+            return res.status(404).json({error: "Salary not Found"})
+        }
+        return res.status(200).json({message: salary})
+    }
+    catch(e){
+        console.log("Error Fetching Salary", e)
+        return res.status(500).json({error: "Internal Server Error"})
+    }
+}
+
+//Get Salary By Id
+const handleGetSalaryById = async (req, res) => {
+    const id = req.params.id
+    try{
+        const salary = await SALARY.findOne({_id: id})
+        if(!salary){
+            return res.status(404).json({error: "Salary not Found"})
+        }
+        return res.status(200).json({message: salary})
+    }
+    catch(e){
+        console.log("Error fetching Salary by Id", e)
+        return res.status(500).json({error: "Internal Server Error"})
+    }
+}
+
 module.exports = {
-    handleAddSalary
+    handleAddSalary,
+    handleGetSalary,
+    handleGetSalaryById
 }

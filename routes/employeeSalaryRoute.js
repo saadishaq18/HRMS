@@ -1,12 +1,12 @@
 const express = require('express')
-const { handleAddSalary } = require('../controller/employeeSalaryController')
+const { handleAddSalary, handleGetSalary, handleGetSalaryById } = require('../controller/employeeSalaryController')
 
 
 const router = express.Router()
 
 router.post('/', handleAddSalary)
-// router.get('/')
-// router.get('/:id')
+router.get('/', handleGetSalary)
+router.get('/:id', handleGetSalaryById)
 // router.patch('/:id')
 // router.delete('/:id')
 
